@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница 1</title>
+    <link rel="stylesheet" href="style.css"> <!-- Общий CSS -->
+    <style>
+        /* Стили для этой конкретной страницы */
+        #page-1-content {
+            background-image: url('https://via.placeholder.com/1920x1080/FF6347/FFFFFF?text=Slide+1');
+        }
+    </style>
+</head>
+<body>
+    <!-- Этот div будет центрировать контент -->
+    <div class="page-wrapper" id="page-1-content">
+        <div class="content">
+            <h1>Страница 1</h1>
+            <p>Это содержимое первой страницы. Нажмите стрелку, чтобы перейти дальше.</p>
+            <div class="navigation">
+                <a href="page2.html" class="nav-link next-btn" data-page-id="page-2-content">&rarr; Следующая</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Общий JS -->
+</body>
+</html>

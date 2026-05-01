@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с 9 картинками</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 9 секций, каждая как отдельная "страница" -->
+        <!-- data-transition-in="" определяет тип анимации появления -->
+        <section class="page page-1" id="page-1" data-transition-in="fade-in">
+            <img src="1.png" alt="Изображение 1">
+        </section>
+        <section class="page page-2" id="page-2" data-transition-in="slide-right">
+            <img src="2.png" alt="Изображение 2">
+        </section>
+        <section class="page page-3" id="page-3" data-transition-in="slide-right">
+            <img src="3.png" alt="Изображение 3">
+        </section>
+        <section class="page page-4" id="page-4" data-transition-in="rotate-y">
+            <img src="4.png" alt="Изображение 4">
+        </section>
+        <section class="page page-5" id="page-5" data-transition-in="slide-up">
+            <img src="5.png" alt="Изображение 5">
+        </section>
+        <section class="page page-6" id="page-6" data-transition-in="slide-left">
+            <img src="6.png" alt="Изображение 6">
+        </section>
+        <section class="page page-7" id="page-7" data-transition-in="scale-down">
+            <img src="7.png" alt="Изображение 7">
+        </section>
+        <section class="page page-8" id="page-8" data-transition-in="fade-in"> <!-- Можно повторить -->
+            <img src="8.png" alt="Изображение 8">
+        </section>
+        <section class="page page-9" id="page-9" data-transition-in="rotate-y">
+            <img src="" alt="Изображение 9">
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
