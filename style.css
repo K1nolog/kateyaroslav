@@ -1,0 +1,136 @@
+/* Сброс стилей и базовые настройки */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    background-color: #000; /* Черный фон по умолчанию */
+}
+
+/* Включаем вертикальную прокрутку, но убираем горизонтальную */
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#app {
+    width: 100%;
+    overflow: hidden; /* На случай, если что-то вылезет */
+}
+
+/* --- Базовые стили для всех страниц --- */
+.page {
+    position: relative; /* Для нормального потока документа */
+    width: 100%;
+    height: 100vh; /* Каждая страница занимает всю высоту окна */
+    display: flex;
+    justify-content: center; /* Центрируем контент по горизонтали */
+    align-items: center;     /* Центрируем контент по вертикали */
+    background-color: #000;
+    box-sizing: border-box; /* Чтобы padding/border не увеличивали размеры */
+    overflow: hidden; /* Важно, чтобы картинка не вылезала за пределы секции */
+
+    /* --- Начальное состояние: скрыто и готово к анимации --- */
+    opacity: 0;
+    visibility: hidden; /* Скрываем по умолчанию */
+
+    /* Общий переход для всех анимаций */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.page img {
+    display: block; /* Важно для корректного отображения */
+    max-height: 100vh; /* Максимальная высота картинки равна высоте вьюпорта */
+    max-width: 100vw;  /* Максимальная ширина картинки равна ширине вьюпорта */
+    width: auto;       /* Ширина будет подстраиваться автоматически */
+    height: auto;      /* Высота будет подстраиваться автоматически */
+    object-fit: contain; /* Гарантирует, что ВСЁ изображение будет видно, без обрезки */
+}
+
+/* --- Состояния анимаций --- */
+
+/* Стандартная анимация появления (Fade In) */
+/* Эта анимация сработает, если странице не задан другой тип перехода,
+   или если задан "fade-in". */
+.page.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1); /* Финальное состояние: в центре, нормальный размер */
+}
+
+/* --- Специфические типы переходов --- */
+/* Классы здесь определяют начальное состояние для конкретной анимации.
+   Финальное состояние определяется правилом .transition-*.is-visible */
+
+/* 1. Slide Right */
+.page.transition-slide-right {
+    transform: translateX(100px) scale(0.95); /* Начинаем немного правее и меньше */
+    opacity: 0; /* Начинаем скрытыми */
+}
+.page.transition-slide-right.is-visible {
+    transform: translateX(0) scale(1); /* Заканчиваем в исходной позиции, нормального размера */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. Scale Up */
+.page.transition-scale-up {
+    transform: scale(0.8); /* Начинаем меньше */
+    opacity: 0;
+}
+.page.transition-scale-up.is-visible {
+    transform: scale(1); /* Заканчиваем нормального размера */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. Rotate Y */
+.page.transition-rotate-y {
+    transform: rotateY(45deg) scale(0.9); /* Начинаем повернутыми */
+    opacity: 0;
+}
+.page.transition-rotate-y.is-visible {
+    transform: rotateY(0) scale(1); /* Заканчиваем в нормальном положении */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 4. Slide Up */
+.page.transition-slide-up {
+    transform: translateY(100px) scale(0.95); /* Начинаем снизу */
+    opacity: 0;
+}
+.page.transition-slide-up.is-visible {
+    transform: translateY(0) scale(1); /* Заканчиваем в исходной позиции */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 5. Slide Left */
+.page.transition-slide-left {
+    transform: translateX(-100px) scale(0.95); /* Начинаем немного левее и меньше */
+    opacity: 0;
+}
+.page.transition-slide-left.is-visible {
+    transform: translateX(0) scale(1); /* Заканчиваем в исходной позиции, нормального размера */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 6. Scale Down */
+.page.transition-scale-down {
+    transform: scale(1.1); /* Начинаем немного больше */
+    opacity: 0;
+}
+.page.transition-scale-down.is-visible {
+    transform: scale(1); /* Заканчиваем нормального размера */
+    opacity: 1;
+    visibility: visible;
+}
+
+/*
+   Когда элемент выходит из видимой области, класс '.is-visible' и соответствующий
+   класс перехода удаляются. Элемент возвращается к состоянию, заданному в '.page',
+   и благодаря 'transition', это возвращение также будет анимировано (эффект "ухода").
+*/
